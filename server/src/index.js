@@ -76,6 +76,7 @@ async function addOneAnimal(name, category, can_fly, lives_in) {
   );
 }
 
+// -------- example for assessment---------------
 // 9. updateOneAnimalName(id, newName)
 async function updateOneAnimalName(id, newName) {
   await db.query("UPDATE animals SET name = $1 WHERE id = $2", [newName, id]);
@@ -154,6 +155,8 @@ app.post("/add-one-animal", async (req, res) => {
   res.send(`Success! ${name} was added!`);
 });
 
+
+// -------- example for assessment---------------
 // 9. POST /update-one-animal-name
 app.post("/update-one-animal-name", async (req, res) => {
   const { id, newName } = req.body;
