@@ -159,8 +159,12 @@ app.post("/add-one-animal", async (req, res) => {
 // -------- example for assessment---------------
 // 9. POST /update-one-animal-name
 app.post("/update-one-animal-name", async (req, res) => {
+  // pulling out the data from the JSON that it is originally submitted as and turns it into a JS object
   const { id, newName } = req.body;
+  // this then passes the retrieved js object to be inserted into the helper function parameters so that it is updated in the SQL db
   await updateOneAnimalName(id, newName);
+  // once it is successfully sent, a response message is sent back to ensure that this request-response cycle is completed
+  // **crucial to include res.send(...) or else the POST request will never be marked as complete**
   res.send(`Success! Animal ${id}'s name was updated to ${newName}!`);
 });
 
